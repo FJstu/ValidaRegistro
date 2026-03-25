@@ -3,7 +3,7 @@ package modelo.beans;
 import java.io.Serializable;
 
 public class Solicitud implements Serializable {
-    private String login; // Es el nombre que usa el usuario para acceder al sistema.
+    private String login; // (Es el nombre que usa el usuario para acceder al sistema.)
     private String clave;
     private String email;
     private String nombreCompleto;
@@ -29,6 +29,14 @@ public class Solicitud implements Serializable {
 
     public String getNombreCompleto() {
         return nombreCompleto;
+    }
+
+    public boolean esValida() {
+        return this.login.length() >= 5
+            && this.clave.length() >= 5
+            && this.email.length() >= 5
+            && this.nombreCompleto.length() >= 5
+                && this.email.contains("@");
     }
 
     public String toString() {
