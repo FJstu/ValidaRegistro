@@ -6,13 +6,15 @@ public class Solicitud implements Serializable {
     private String login; // (Es el nombre que usa el usuario para acceder al sistema.)
     private String clave;
     private String email;
-    private String nombreCompleto;
+    private String nombre;
+    private String apellidos;
 
-    public Solicitud(String login, String clave, String email, String nombreCompleto) {
+    public Solicitud(String login, String clave, String email, String nombre, String apellidos) {
         this.login = login;
         this.clave = clave;
         this.email = email;
-        this.nombreCompleto = nombreCompleto;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
     }
 
     public String getLogin() {
@@ -27,19 +29,25 @@ public class Solicitud implements Serializable {
         return clave;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public String getNombre() {
+        return nombre;
     }
 
     public boolean esValida() {
-        return this.login.length() >= 5
-            && this.clave.length() >= 5
-            && this.email.length() >= 5
-            && this.nombreCompleto.length() >= 5
-                && this.email.contains("@");
+        return login != null &&
+                clave != null &&
+                email != null &&
+                nombre != null &&
+                apellidos != null &&
+                login.length() >= 5 &&
+                clave.length() >= 5 &&
+                email.length() >= 5 &&
+                email.contains("@") &&
+                nombre.length() >= 5 &&
+                apellidos.length() >= 5;
     }
 
     public String toString() {
-        return this.login+":"+this.clave+":"+this.email+":"+this.nombreCompleto;
+        return this.login+":"+this.clave+":"+this.email+":"+this.nombre;
     }
 }
