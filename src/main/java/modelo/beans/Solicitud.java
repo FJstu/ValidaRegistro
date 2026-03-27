@@ -48,6 +48,6 @@ public class Solicitud implements Serializable {
     }
 
     public String toString() {
-        return this.login+":"+this.clave+":"+this.email+":"+this.nombre;
+        return this.login+":"+this.clave+":"+this.email+":"+this.nombre+":"+this.apellidos;
     }
 }
