@@ -1,39 +1,37 @@
-package modelo.procesos;
+package validaRegistro.modelo.procesos;
 
-import modelo.beans.Solicitud;
+import validaRegistro.modelo.beans.Solicitud;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class GestionArchivo {
 
-    public void crearSolicitud(File archivo, HashMap<String, Solicitud> solicitudes) {
+    public void escribirArchivo(HashMap<String, Solicitud> solicitudes, String nombreArchivo) {
         try {
-            if (!archivo.exists()) {
-                archivo = new File("solicitudes.txt");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo, true));
+
+            for (Solicitud solicitud : solicitudes.values()) {
+                bw.write(String.valueOf(solicitud));
+                bw.newLine();
             }
-            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
-
-
+            bw.close();
         } catch (IOException ioe) {
             System.out.println("Error de entrada y salida: "+ioe.getMessage());
         }
     }
 
-    public Map<String, Solicitud> guardarSolicitud() {
+    public HashMap<String, Solicitud> cargarArchivo(String nombreArchivo) {
         String linea;
-        Map<String, Solicitud> solicitudes = new HashMap<>();
+        HashMap<String, Solicitud> solicitudes = new HashMap<>();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("solicitudes.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split(":");
                 Solicitud solicitud = new Solicitud(partes[0], partes[1], partes[2], partes[3], partes[4]);
                 if (solicitud.esValida()) {
-                    solicitudes.put(solicitud.getClave(), solicitud);
+                    solicitudes.put(solicitud.getLogin(), solicitud);
                 }
             }
             br.close();

@@ -1,4 +1,4 @@
-package modelo.beans;
+package validaRegistro.modelo.beans;
 
 import java.io.Serializable;
 
