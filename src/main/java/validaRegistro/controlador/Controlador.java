@@ -1,10 +1,8 @@
 package validaRegistro.controlador;
 
-import validaRegistro.modelo.beans.Solicitud;
 import validaRegistro.modelo.procesos.GestionArchivo;
 import validaRegistro.modelo.procesos.GestionSolicitudes;
 
-import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
