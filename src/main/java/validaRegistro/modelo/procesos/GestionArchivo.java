@@ -16,9 +16,11 @@ public class GestionArchivo {
             BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split(":");
-                Solicitud solicitud = new Solicitud(partes[0], partes[1], partes[2], partes[3], partes[4]);
-                if (solicitud.esValida()) {
-                    solicitudes.put(solicitud.getLogin(), solicitud);
+                if (partes.length == 5) {
+                    Solicitud solicitud = new Solicitud(partes[0], partes[1], partes[2], partes[3], partes[4]);
+                    if (solicitud.esValida()) {
+                        solicitudes.put(solicitud.getLogin(), solicitud);
+                    }
                 }
             }
             br.close();
