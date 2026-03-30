@@ -13,12 +13,11 @@ public class Controlador {
         Scanner teclado = new Scanner(System.in);
         GestionSolicitudes gestionSolicitudes = new GestionSolicitudes();
         GestionArchivo gestionArchivo = new GestionArchivo();
-        HashMap<String, Solicitud> solicitudes = gestionSolicitudes.crearSolicitudes();
 
         try {
             System.out.print("Nombre del archivo: ");
             String nombreArchivo = teclado.nextLine();
-            gestionArchivo.validarNombreArchivo(gestionSolicitudes, solicitudes, nombreArchivo);
+            gestionArchivo.validarNombreArchivo(gestionSolicitudes, nombreArchivo);
         } catch (InputMismatchException e) {
             System.out.println(e.getMessage());
         }

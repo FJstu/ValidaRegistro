@@ -8,20 +8,6 @@ import java.util.InputMismatchException;
 
 public class GestionArchivo {
 
-    public void escribirArchivo(HashMap<String, Solicitud> solicitudes, String nombreArchivo) {
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo, true));
-
-            for (Solicitud solicitud : solicitudes.values()) {
-                bw.write(String.valueOf(solicitud));
-                bw.newLine();
-            }
-            bw.close();
-        } catch (IOException ioe) {
-            System.out.println("Error de entrada y salida: "+ioe.getMessage());
-        }
-    }
-
     public HashMap<String, Solicitud> cargarArchivo(String nombreArchivo) {
         String linea;
         HashMap<String, Solicitud> solicitudes = new HashMap<>();
@@ -42,10 +28,8 @@ public class GestionArchivo {
         return solicitudes;
     }
 
-    public void validarNombreArchivo(GestionSolicitudes gestionSolicitudes,
-    HashMap<String, Solicitud> solicitudes, String nombreArchivo) throws InputMismatchException {
+    public void validarNombreArchivo(GestionSolicitudes gestionSolicitudes, String nombreArchivo) throws InputMismatchException {
         if (nombreArchivo != null && nombreArchivo.contains(".txt")) {
-            escribirArchivo(solicitudes, nombreArchivo);
             gestionSolicitudes.mostrarSolicitudes(cargarArchivo(nombreArchivo));
         } else {
             throw new InputMismatchException("ERROR: Nombre no válido.");
