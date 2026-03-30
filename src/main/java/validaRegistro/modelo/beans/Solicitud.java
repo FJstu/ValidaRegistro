@@ -1,8 +1,6 @@
 package validaRegistro.modelo.beans;
 
-import java.io.Serializable;
-
-public class Solicitud implements Serializable {
+public class Solicitud {
     private String login; // (Es el nombre que usa el usuario para acceder al sistema.)
     private String clave;
     private String email;
@@ -32,6 +30,8 @@ public class Solicitud implements Serializable {
     public String getNombre() {
         return nombre;
     }
+
+    public String getApellidos() { return apellidos; }
 
     public boolean esValida() {
         return login != null &&

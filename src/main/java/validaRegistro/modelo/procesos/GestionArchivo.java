@@ -4,6 +4,7 @@ import validaRegistro.modelo.beans.Solicitud;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 
 public class GestionArchivo {
 
@@ -39,5 +40,15 @@ public class GestionArchivo {
             System.out.println("Error de entrada y salida: "+ioe.getMessage());
         }
         return solicitudes;
+    }
+
+    public void validarNombreArchivo(GestionSolicitudes gestionSolicitudes,
+    HashMap<String, Solicitud> solicitudes, String nombreArchivo) throws InputMismatchException {
+        if (nombreArchivo != null && nombreArchivo.contains(".txt")) {
+            escribirArchivo(solicitudes, nombreArchivo);
+            gestionSolicitudes.mostrarSolicitudes(cargarArchivo(nombreArchivo));
+        } else {
+            throw new InputMismatchException("ERROR: Nombre no válido.");
+        }
     }
 }
