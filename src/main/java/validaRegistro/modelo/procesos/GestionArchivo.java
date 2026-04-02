@@ -18,9 +18,6 @@ public class GestionArchivo {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                linea = linea.trim();
-                if (linea.isEmpty()) continue;
-
                 String[] partes = linea.split(":");
                 if (partes.length == 5) {
                     Solicitud solicitud = new Solicitud(
