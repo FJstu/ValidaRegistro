@@ -47,6 +47,7 @@ public class Solicitud {
                 apellidos.length() >= 5;
     }
 
+    @Override
     public String toString() {
         return this.login+":"+this.clave+":"+this.email+":"+this.nombre+":"+this.apellidos;
     }
